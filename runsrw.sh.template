@@ -1,0 +1,13 @@
+#!/bin/bash -l
+#SBATCH -N %(N_node)d
+#SBATCH -C haswell
+#SBATCH -q %(QOS)s
+#SBATCH -J %(job_name)s
+#SBATCH --tasks-per-node=%(tasks_per_node)d
+#SBATCH --mail-user=ahe@bnl.gov
+#SBATCH --mail-type=ALL
+#SBATCH -L SCRATCH
+#SBATCH -t %(hour)d:%(min)d:00
+
+#run the application:
+srun -n %(n_processor)d python %(fn_srw_py)s
